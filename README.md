@@ -30,21 +30,15 @@ Using the song and event datasets, you'll need to create a star schema optimized
 ## Package required
 ```
 import os
-import glob
-import psycopg2
-import pandas as pd
+import datetime
+import pyspark
 import boto3
-import json
 ```
 ## Implementation steps
-1. Use AWS to build the RedShift Cluster <br/>
-![p1](Cluster.JPG)
-
-2. Edit the ```dwh.cfg``` to complete the HOST, ROLE, DB_NAME....etc to connect the RedShift cluster
-3. Define all the SQL in ```sql_queries.py``` 
-4. run the ```create_tables.py``` to creat fact and dimension tables in Star Schema in RedShift
-5. run the ```etl.py``` to load the data from S3 into staging tables on Redshift to perform ETL process, then move to analytics tables on Redshift
-6. We can perform any OLAP on AWS
+1. Use AWS to build an EMR Cluster <br/>
+![p1](EMR.JPG)
+2. Edit the ```dl.cfg``` to complete the AWS credentials information
+5. run the ```etl.py``` to load the data from S3, processes using Spark and loads the data back into S3
 
 -------------------------------------------------------------------------------------------------------------------------------------
 ### More about me
